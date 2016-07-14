@@ -2,7 +2,6 @@
 session_start();
 if(isset($_SESSION['urole']) ){
 	$uid = $_SESSION['uid'];
-
 	if( $_SESSION['urole']!=1){
 		include('page_header.php');  //画面出力開始
 		echo "この機能を利用する権限がありません";
@@ -25,10 +24,5 @@ $detail = $_POST['detail'];
  if (!$rs) {
    die('エラー: ' . mysql_error());
  }
-
-
    $url = 'index.php';           //転送先のURL(TOPページ)
    header('Location:' . $url);   // 画面転送
-
-
-?>

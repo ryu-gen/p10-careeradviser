@@ -2,7 +2,7 @@
 session_start();
 include_once('db_inc.php'); //データベース接続のプログラムを読み込む
 
-if(isset($_SESSION['urole']) ){
+if(isset($_SESSION['urole'])){
 	$uid = $_SESSION['uid'];
 
 	if( $_SESSION['urole']!=1){

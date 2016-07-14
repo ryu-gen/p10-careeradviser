@@ -38,7 +38,6 @@ $sid = strtoupper($sid);
    die('エラー: ' . mysql_error());
  }
 
-
    $url = 'index.php';           //転送先のURL(TOPページ)
    header('Location:' . $url);   // 画面転送
 

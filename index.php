@@ -6,7 +6,6 @@ if(!isset($_SESSION['uid'])){
   exit;
 }
 $urole=$_SESSION['urole'];
-
 if($urole==1){
   echo '<h2 class="bg-danger">現状変更</h2>';
 	$uid = $_SESSION['uid'];
@@ -15,9 +14,7 @@ if($urole==1){
 	if (!$rs) {
     	die ('エラー: ' . mysql_error());
 	}
-
 	$row = mysql_fetch_array($rs) ;
-
 	if($row) $status= $row['status'];
 	$i = $row['status'];
    $status = array(
@@ -47,7 +44,6 @@ foreach ($status as $k=>$st){
 $sql = "SELECT * FROM vw_katudou " ;//検索条件を適用したSQL文を作成
 if(isset($_SESSION['urole']) ){
 	$uid = $_SESSION['uid'];
-
 	if( $_SESSION['urole']==1){
 		$sql .= " where uid='$uid'";
 	}
@@ -72,7 +68,6 @@ while ($row) {
  echo '<td>' . $row['company'] . '</td>';
  echo '<td>' . $row['detail'] . '</td>';
  //echo '<td>' . $row['decision'] . '</td>';
-
   $i = $row['decision'];
   $decision = array(
   1=>"決定",
@@ -83,7 +78,6 @@ while ($row) {
  $row = mysql_fetch_array($rs) ;
 }
 echo '</table>';
-
 $sql = "SELECT * FROM vw_jogen " ;//検索条件を適用したSQL文を作成
 if( $_SESSION['urole']==1){
 	echo '<h2 class="bg-success">助言一覧</h2>';
@@ -105,6 +99,5 @@ if( $_SESSION['urole']==1){
 	}
 	echo '</table>';
 }
-
 include('page_footer.php');  //画面出力終了
 ?>

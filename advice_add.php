@@ -52,23 +52,37 @@ while ($row) {
 
 }
 echo '</table>';
+
+echo '<form action="advice_save.php" method="post">';
+echo '<input type="HIDDEN" name="sid" value="' .$sid .'"/>';
+$act='insert';
+$kst = $ket = date('Y-n-d H:i:s');
+echo '<br>';
+echo '<br>';
+echo '<div class="input-group date">';
+echo 	'<span class="input-group-addon">日付</span>';
+echo 	'<input type="text" class="form-control" name="vdate" value=' . $kst . '/>';
+echo 	'<span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>';
+echo '</div>';
+
+echo '<br>';
+echo '<br>';
+echo '<div class="input-group">';
+echo 	'<span class="input-group-addon">助言</span>';
+echo 	'<textarea class="form-control" name="content"　rows="5" cols="40"　placeholder=""></textarea>';
+echo '</div>';
+
+echo '<br>';
+echo '<br>';
+echo '<div class="input-group" role="group">';
+echo 	'<input type="submit" value="登録" class="btn btn-default"/>';
+echo 	'<input type="reset" value="キャンセル" class="btn btn-default"/>';
+echo '</div>';
+
+echo '<br>';
+echo '<br>';
+
 ?>
-
-
-<form action="advice_save.php" method="post">
-<table>
-<tr><td>日付</td><td>
-  <input type="TEXT" name="vdate" value="<?php echo date('Y-m-d');?>"/>
-  <input type="HIDDEN" name="sid" value="<?php echo $sid;?>"/>
-</td></tr>
-<tr><td>助言</td><td>
-  <textarea name="content" rows="5" cols="40"></textarea>
-</td></tr>
-</table>
-
-
-  <input type="submit" name="a" value="送信"/>
-<input type="reset" value="取消"/>
 </form>
 
 <?php include('page_footer.php');  ?>
