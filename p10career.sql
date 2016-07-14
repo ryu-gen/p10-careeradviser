@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 3.3.9
 -- http://www.phpmyadmin.net
 --
--- ホスト: 127.0.0.1
--- 生成日時: 2016 年 5 月 30 日 01:36
--- サーバのバージョン: 5.5.27
--- PHP のバージョン: 5.4.7
+-- ホスト: localhost
+-- 生成時間: 2016 年 7 月 14 日 08:20
+-- サーバのバージョン: 5.5.8
+-- PHP のバージョン: 5.3.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -39,10 +38,10 @@ CREATE TABLE IF NOT EXISTS `tb_activity` (
   `memo` text NOT NULL,
   PRIMARY KEY (`aid`),
   UNIQUE KEY `aid` (`aid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
--- テーブルのデータのダンプ `tb_activity`
+-- テーブルのデータをダンプしています `tb_activity`
 --
 
 INSERT INTO `tb_activity` (`aid`, `sid`, `adate`, `company`, `jobtype`, `result`, `decision`, `detail`, `next`, `memo`) VALUES
@@ -55,7 +54,9 @@ INSERT INTO `tb_activity` (`aid`, `sid`, `adate`, `company`, `jobtype`, `result`
 (7, '12JK097', '2015-06-21', 'ジェネシス株式会社', 4, 2, 2, '個別面接。\r\n聞かれた事に答えることが出来ず、印象が悪かったと思う。', '同じ業界をもう少し受けてみる。', 'もう少し専門知識を深めていきたい。'),
 (8, '12JK100', '2015-09-06', '朝倉市役所', 3, 2, 2, '筆記試験。\r\n教養試験と専門試験があった。\r\n非常に難易度が高かった。', '27日に北九州市役所', '今回は問題が難しかったので、復習をしっかりと行いたい。'),
 (9, '12JK100', '2015-09-27', '北九州市役所', 3, 1, 2, '筆記試験。\r\n教養試験のみ。\r\n今回は、問題が簡単でケアレスミスに気を付けた。', '10月18日にグループディスカッションと面接', '最近のニュースなどを確認して、対策をしていきたい。'),
-(10, '12JK106', '2015-08-30', '九州産業大学　情報科学研究科', 4, 1, 1, '面接。\r\nTOEICの点数など聞かれた。', '卒業研究をしっかりと完成させる。', 'より専門的な知識を身につけたい。');
+(10, '12JK106', '2015-08-30', '九州産業大学　情報科学研究科', 4, 1, 1, '面接。\r\nTOEICの点数など聞かれた。', '卒業研究をしっかりと完成させる。', 'より専門的な知識を身につけたい。'),
+(13, '12JK145', '2016-07-07', 'fa', 1, 1, 1, 'ja', 'ks', 'jdsf'),
+(14, '12JK145', '2016-07-07', 'sa', 1, 1, 1, 'sa', 'sa', 'sa');
 
 -- --------------------------------------------------------
 
@@ -71,12 +72,60 @@ CREATE TABLE IF NOT EXISTS `tb_advice` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- テーブルのデータのダンプ `tb_advice`
+-- テーブルのデータをダンプしています `tb_advice`
 --
 
 INSERT INTO `tb_advice` (`sid`, `vdate`, `content`, `staff_id`) VALUES
 ('12JK045', '2015-11-17', '体調を崩さないようにして頑張ってください。', 'sei'),
-('12JK145', '2015-11-11', '内定おめでとう!', 'sei');
+('12JK145', '2015-11-11', '内定おめでとう!', 'sei'),
+('', '2016-07-07', 'だ', 'sei'),
+('', '2016-07-07', 'だ', 'sei'),
+('', '2016-07-07', 'da', 'sei'),
+('', '2016-07-07', 'da\r\n', 'sei'),
+('<?php echo $sid;', '2016-07-07', 'da', 'sei'),
+('<?php echo $sid;', '2016-07-07', 'da', 'sei'),
+('12JK145', '2016-07-07', 'da', 'sei'),
+('12JK045', '2016-07-12', '谷', 'sei');
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `tb_guidance`
+--
+
+CREATE TABLE IF NOT EXISTS `tb_guidance` (
+  `gid` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `gname` varchar(64) NOT NULL,
+  `gtime` date NOT NULL,
+  `gplace` varchar(64) NOT NULL,
+  `gdetail` text NOT NULL,
+  PRIMARY KEY (`gid`),
+  UNIQUE KEY `gid` (`gid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- テーブルのデータをダンプしています `tb_guidance`
+--
+
+INSERT INTO `tb_guidance` (`gid`, `gname`, `gtime`, `gplace`, `gdetail`) VALUES
+(5, 'ガイダンス', '2016-07-12', '12107', 'ガイダンス');
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `tb_jobs`
+--
+
+CREATE TABLE IF NOT EXISTS `tb_jobs` (
+  `jid` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`jid`),
+  UNIQUE KEY `jid` (`jid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- テーブルのデータをダンプしています `tb_jobs`
+--
+
 
 -- --------------------------------------------------------
 
@@ -94,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `tb_lab` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- テーブルのデータのダンプ `tb_lab`
+-- テーブルのデータをダンプしています `tb_lab`
 --
 
 INSERT INTO `tb_lab` (`lbid`, `lbname`, `study`, `staff-id`, `room`) VALUES
@@ -119,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `tb_student` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- テーブルのデータのダンプ `tb_student`
+-- テーブルのデータをダンプしています `tb_student`
 --
 
 INSERT INTO `tb_student` (`sid`, `uid`, `sex`, `stype`, `slab`, `status`) VALUES
@@ -149,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `tb_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- テーブルのデータのダンプ `tb_user`
+-- テーブルのデータをダンプしています `tb_user`
 --
 
 INSERT INTO `tb_user` (`uid`, `uname`, `email`, `tel`, `upass`, `urole`) VALUES
@@ -179,7 +228,7 @@ CREATE TABLE IF NOT EXISTS `tb_wish` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- テーブルのデータのダンプ `tb_wish`
+-- テーブルのデータをダンプしています `tb_wish`
 --
 
 INSERT INTO `tb_wish` (`sid`, `careertype`, `detail`) VALUES
@@ -189,7 +238,8 @@ INSERT INTO `tb_wish` (`sid`, `careertype`, `detail`) VALUES
 ('12JK045', 1, '一般企業への就職を希望する。'),
 ('12JK106', 2, '本学、情報科学研究科に進学を希望する。'),
 ('12JK112', 3, 'アメリカで就職する予定。'),
-('12JK150', 3, '中国で就職を希望。\r\n');
+('12JK150', 3, '中国で就職を希望。\r\n'),
+('12JK145', 1, 'kibou ');
 
 -- --------------------------------------------------------
 
@@ -273,7 +323,3 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `vw_katudou`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_katudou` AS select distinct `u`.`uid` AS `uid`,`s`.`sid` AS `sid`,`u`.`uname` AS `sname`,`s`.`sex` AS `sex`,`s`.`slab` AS `slab`,`b`.`lbname` AS `lbname`,`s`.`status` AS `status`,`a`.`aid` AS `aid`,`a`.`adate` AS `adate`,`a`.`company` AS `company`,`a`.`jobtype` AS `jobtype`,`a`.`result` AS `result`,`a`.`decision` AS `decision`,`a`.`detail` AS `detail`,`a`.`next` AS `next`,`a`.`memo` AS `memo`,`w`.`careertype` AS `careertype`,`w`.`detail` AS `wish` from ((((`tb_user` `u` join `tb_student` `s`) join `tb_activity` `a`) join `tb_wish` `w`) join `tb_lab` `b`) where ((`u`.`uid` = `s`.`uid`) and (`s`.`sid` = `a`.`sid`) and (`s`.`sid` = `w`.`sid`) and (`b`.`lbid` = `s`.`slab`));
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
